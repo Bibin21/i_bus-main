@@ -1,0 +1,17 @@
+{% extends 'user_base.html' %}
+{% block head %}
+
+
+<title>Welcome!</title>
+
+{% endblock head %}
+
+{% block body %}
+
+<div class="mt-2 mb-4 text-center">
+    <a class="btn btn-primary me-2" href="{% url 'login' %}">Login</a>
+    <a class="btn btn-outline-primary" href="{% url 'signup' %}">Sign Up</a>
+</div>
+
+{% endblock body %}
+

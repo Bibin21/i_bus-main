@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+
+<title>Book Pass</title>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="text-center mt-3">
+        <h2>Book Pass</h2>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h2>
+                            <span class="badge text-bg-primary">
+                            Bus No {{ bus.bus_number }}
+                            </span>
+                        </h2>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-5">
+                                <h3>College</h3>
+                            </div>
+                            <div class="col-md-2">
+                                <h3><i class="fa-solid fa-arrow-right-arrow-left"></i></h3>
+                            </div>
+                            <div class="col-md-5">
+                                <h3>{{ bus.destination }}</h3>
+                            </div>
+                        </div>
+    
+                        <div class="text-center mt-4">
+                            <em>Via {{ bus.bus_stops.all|join:", " }}</em>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+
+                        <button class="btn btn-primary">Proceed</button>
+                        <a class="btn btn-secondary" href="{% url 'select_bus' %}">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
